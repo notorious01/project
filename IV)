@@ -1,0 +1,68 @@
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
+
+int main()
+{
+    RenderWindow window( VideoMode(200, 200), "Test!");   // Создаём окно 200x200
+    CircleShape MyCircle(100.f);   // Создаём окружность с радиусом 100
+    MyCircle.setFillColor(Color::Green);   // Зеленый цвет окружности
+    
+    Texture t;
+    t.loadFromFile("fang.png");  // Загрузка картинки из файла
+    
+    float currentFrame=0;   // Дополнительная переменная, в которой хранится номер текущего кадра
+    
+    Sprite s;   // Создание спрайта с Texture   
+    s.setTexture(t);
+    s.setTextureRect( IntRect(0,244,40,50)   // Загрузка картинки спрайта с определенными координатами
+    s.setPosition(50, 100);   // Рисуем в координате (50,100)
+    
+    Clocl clock;
+    
+    while (window.isOpen())  // Открытие окна
+    {
+        float time = clock.getElapsedTime().asMicroseconds();
+        clock.restart();   // Засекается новое время
+        
+        
+        Event event;
+        while ( window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+                window.close();
+        }
+        
+        if (Keyboard::isKeyPressed(Keyboard::Left))   // Движение влево
+        {
+            s.move(-0.1,0);
+            
+           currentFrame += 0.005;   // Скорость анимации
+           if (currentFrame > 6) currentFrame -=6;   // Кол-во кадров (6)
+           
+           s.setTextureRect(IntRect(40*int(currentFrame)+40,244,-40,50));   
+        }
+        
+        if (Keyboard::isKeyPressed(Keyboard::Right))   // Движение вправо
+        {
+            s.move(0,0.1);
+        
+           currentFrame += 0.005;   // Скорость анимации
+           if (currentFrame > 6) currentFrame -=6;   // Кол-во кадров (6)
+           
+           s.setTextureRect(IntRect(40*int(currentFrame),244,40,50));   // Текстура сдвигается каждый раз на 40
+        }
+        
+        if (Keyboard::isKeyPressed(Keyboard::up))   // Движение вверх
+        {
+            s.move(0,0.1);
+        }
+        
+        window.clear();  // Очищаем экран
+        window.draw(s);  // Рисуем окружность
+        window.display();  // Вывод на дисплей
+    }
+    
+    return 0;
+    
+}
