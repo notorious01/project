@@ -13,7 +13,7 @@ int main()
     
     Sprite s;   // Создание спрайта с Texture   
     s.setTexture(t);
-    s.setPosition(50,100);   // Рисуем в координате (50,100)
+    s.setPosition(50, 100);   // Рисуем в координате (50,100)
     
     
     while (window.isOpen())  // Открытие окна
