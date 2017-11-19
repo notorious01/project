@@ -1,0 +1,35 @@
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
+
+int main()
+{
+    RenderWindow window( VideoMode(200, 200), "Test!");   // Создаём окно 200x200
+    CircleShape MyCircle(100.f);   // Создаём окружность с радиусом 100
+    MyCircle.setFillColor(Color::Green);   // Зеленый цвет окружности
+    
+    Texture t;
+    t.loadFromFile("fang.png");
+    
+    Sprite s;
+    s.setTexture(t);
+    s.setPosition(50,100);
+    
+    
+    while (window.isOpen())  // Открытие окна
+    {
+        Event event;
+        while ( window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+                window.close();
+        }
+        
+        window.clear();  // Очищаем экран
+        window.draw(s);  // Рисуем окружность
+        window.display();  // Вывод на дисплей
+    }
+    
+    return 0;
+    
+}
