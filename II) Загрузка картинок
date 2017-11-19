@@ -9,11 +9,11 @@ int main()
     MyCircle.setFillColor(Color::Green);   // Зеленый цвет окружности
     
     Texture t;
-    t.loadFromFile("fang.png");
+    t.loadFromFile("fang.png");  // Загрузка картинки из файла
     
-    Sprite s;
+    Sprite s;   // Создание спрайта с Texture   
     s.setTexture(t);
-    s.setPosition(50,100);
+    s.setPosition(50,100);   // Рисуем в координате (50,100)
     
     
     while (window.isOpen())  // Открытие окна
