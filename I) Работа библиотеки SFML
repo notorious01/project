@@ -8,7 +8,7 @@ int main()
     CircleShape MyCircle(100.f);   // Создаём окружность с радиусом 100
     MyCircle.setFillColor(Color::Green);   // Зеленый цвет окружности
     
-    while (window.isOpen())  // Открытие окна
+    while ( window.isOpen())  // Открытие окна
     {
         Event event;
         while ( window.pollEvent(event))
